@@ -7,7 +7,7 @@ import matplotlib.cm as cm
 pi=np.pi
 
 data=sys.argv[1]
-data=np.loadtxt(data, delimiter=' ')
+data=np.loadtxt(data, delimiter=',')
 n=data.shape[0]
 theta=np.arange(0, 2*pi, 2*pi/n)
 if n%2==0:
