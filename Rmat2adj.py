@@ -23,17 +23,14 @@ alpha=np.float(sys.argv[4])
 matrix=np.loadtxt(filename, delimiter=',')
 matrix[np.isnan(matrix)]=0
 
-#prepare outputfile
-output=np.zeros(matrix.shape)
-
 #get T-value matrix by correlation coefficient matrix
 Tmat=np.abs(matrix)*pow(n_sample-2, 1/2)/((1-matrix**2)**(1/2))
 
 #get T threshold for significance
 T_sig=-1*scipy.stats.t.ppf(q=[alpha/2], df=n_sample-2)
 
-#compare T-value matrix and the threshold
-output[Tmat>T_sig]=1
+#set 0 to unsignificant values
+Tmat[Tmat<T_sig]=0
 
 #Output
-np.savetxt(output_filename, output, delimiter=',')
+np.savetxt(output_filename, Tmat, delimiter=',')
