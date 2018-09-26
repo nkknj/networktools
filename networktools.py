@@ -52,3 +52,62 @@ def list2mat(list, n, directed=True):
 	output=output+output.T
 	return output
 
+def shortest_path_length(lengthmat):
+    n=lengthmat.shape[0]
+    shortest_path_length=np.zeros((n, n))
+    for i_start_node in range(n):
+        i_length=np.zeros(n)+inf
+        candidate=np.zeros(n)+inf
+        candidate[i_start_node]=0
+        
+        while np.min(candidate)!=inf:
+            i_length[np.argmin(candidate)]=np.min(candidate)
+
+            candidate=i_length.reshape(n, 1)+lengthmat
+            candidate=np.min(candidate, axis=0)
+            candidate[i_length!=inf]=inf
+        
+        shortest_path_length[i_start_node]=i_length
+        
+    return shortest_path_length
+
+def characteristic_path_length(lengthmat, glo=True):
+    n=lengthmat.shape[0]
+    shortest_path_length_mat=shortest_path_length(lengthmat)
+    characteristic_path_length=np.sum(shortest_path_length_mat, axis=0)/(n-1)
+    
+    if glo==True:
+        characteristic_path_length=np.mean(characteristic_path_length)
+        
+    return characteristic_path_length
+
+def clustering_coefficient(weightedmat, glo=True):
+    triangles=triangle(weightedmat)
+    k=np.sum(wei2unwei(weightedmat), axis=0)
+    k*=(k-1)
+    k[k==0]=1
+    clustering_coefficient=2*triangles/k
+    
+    if glo==True:
+        return np.mean(clustering_coefficient)
+    
+    return clustering_coefficient
+
+def wei2unwei(mat):
+    n=mat.shape[0]
+    adjacency=np.zeros((n, n))
+    adjacency[mat>0]=1
+    return adjacency    
+    
+def triangle(weightedmat):
+    n=weightedmat.shape[0]
+    triangles=np.zeros(n)
+    for i in range(n):
+        for j in range(n):
+            for k in range(n):
+                temp=weightedmat[i, j]*weightedmat[j, k]*weightedmat[k, i]
+                triangles[i]+=pow(temp, 1/3)
+        
+    
+    triangles/=2
+    return triangles
