@@ -1,5 +1,5 @@
 #Usage
-#python3 Rmat2adj.py [input filename] [output filename] [number of sample] [significance level]
+#python3 Rmat_significant.py [input filename] [output filename] [number of sample] [significance level]
 #
 #Input
 #[input filename]: Input csv filename (correlation coefficient matrix)
