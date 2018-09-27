@@ -29,8 +29,11 @@ Tmat=np.abs(matrix)*pow(n_sample-2, 1/2)/((1-matrix**2)**(1/2))
 #get T threshold for significance
 T_sig=-1*scipy.stats.t.ppf(q=[alpha/2], df=n_sample-2)
 
-#set 0 to unsignificant values
+#set unsignificant values 0
 Tmat[Tmat<T_sig]=0
+
+#set minus R 0
+Tmat[Rmat<0]=0
 
 #Output
 np.savetxt(output_filename, Tmat, delimiter=',')
