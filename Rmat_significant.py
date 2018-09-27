@@ -33,7 +33,7 @@ T_sig=-1*scipy.stats.t.ppf(q=[alpha/2], df=n_sample-2)
 Tmat[Tmat<T_sig]=0
 
 #set minus R 0
-Tmat[Rmat<0]=0
+Tmat[matrix<0]=0
 
 #Output
 np.savetxt(output_filename, Tmat, delimiter=',')
