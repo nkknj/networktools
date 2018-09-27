@@ -1,3 +1,10 @@
+#Usage
+#python3 tnorm_len2wei.py [input filename] [output filename]
+#
+#Input
+#[input filename]: length matrix csv file
+#[output filename]: save weighted matrix as the argv
+
 import sys
 import numpy as np
 import networktools
