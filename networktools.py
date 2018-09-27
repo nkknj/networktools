@@ -2,6 +2,7 @@
 
 import os, sys
 import numpy as np
+inf=np.inf
 
 def mat2list(mat):
 	output=np.zeros((1, 3))
