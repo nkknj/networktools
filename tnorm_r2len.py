@@ -1,5 +1,5 @@
 #Usage
-#python3 get_length_matrix.py [input filename] [output filename]
+#python3 tnorm_r2len.py [input filename] [output filename]
 #Input
 #
 #[input filename]: input weighted matrix csv filename
