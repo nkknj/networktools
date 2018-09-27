@@ -1,4 +1,5 @@
 # networktools
+- Python function package for network analysis.
 
 # chord_diagram.py
 - Usage: chord_diagram.py matrix.csv
@@ -10,4 +11,12 @@
 
 # Rmat_significant.py
 - Usage: python3 Rmat_significant.py [input] [output] [number of samples] [significance level]
-- Get R matrix with only significant and positive values
+- Get R matrix with only significant and positive values.
+
+# tnorm_r2len.py
+- Usage: python3 [input] [output]
+- Converting correlation matrix to length matrix by Dombi t-norm.
+
+# tnorm_len2wei.py
+- Usage: python3 [input] [output]
+- Converting length matrix to weight matrix by Dombi t-norm.
